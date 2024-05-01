@@ -1,0 +1,46 @@
+Git/Github Notes | 2024-04-24 | push code to remote repository
+Create github account. Create a repository. Copy URL to clone it on your local computer.
+> cd Desktop
+> git clone git@github.com:astitou77/test.git
+> cd ~/Desktop/test
+// Link your local 'main' branch to the remote github 'origin/main' branch
+> git branch --set-upstream-to=origin/main main
+> git status    // shows no changes to commit/add yet
+> vi SomeSSLPlaybook.yml    // create and add some files
+> git status    // shows new files were added
+> git log	// shows current commits in the repo (initial 1 created automatically by github)
+> git add .	// add all new files to staging
+> git commit -m "Added blahblah to the project"      // create a new commit (snapshot) to 'local' repo
+> git log	// see 2 commits now on 'local' main branch
+> git log origin    // see only 1 commit still on 'remote' github 'origin/main' branch
+
+ 
+[A] Push to github/gitlab with SSH
+ 
+> ssh-keygen
+ 
+> cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAAD....
+ 
+// add public SSH public key output above to your github account
+github account > Settings > SSH & GPG Keys > Add SSH Key
+ 
+// Test SSH key working
+> ssh -T git@hithub.com
+
+> git remote set-url origin git@github.com:<username>/<repository>.git
+ 
+> git push -u origin main
+ 
+(check on the 'remote' github site the added commit)
+ 
+ 
+[B] Push to github/gitlab with a Token
+
+Get a Token with enough permissions to SSH/HTTPS into the remote github repo (to push new code changes)
+User > Settings > Developer Settings > Personal Access tokens > Tokens (classic) > Generate New Token (repo, workflow, gist, user)
+Example of Token: ghp_leO40fiYa1VGaL75rZbpvQXlbJ99Ys1pxqv   [Expires April 30th 2024]
+// Push changes in 'local' repository into the 'remote' repo on github
+> git remote set-url origin https://<username>:<github-token>@github.com/<username>/<github-repo-name>.git
+> git push -u origin main
+(check on the 'remote' github site the added commit)

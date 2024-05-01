@@ -1,0 +1,68 @@
+Notes |  2024-05-01 | Session #2: Develop a Java Web App
+ 
+[1 of 3] JDK
+ 
+Download: https://jdk.java.net/archive/
+ 
+> cd /appdata
+> wget https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-x64_bin.tar.gz
+> tar -xvf openjdk-21.0.1_linux-x64_bin.tar.gz
+ 
+> vi ~/.bashrc
+> export JAVA_HOME="/appdata/jdk-21.0.1"
+> export JRE_HOME="/appdata/jdk-21.0.1"
+ 
+ 
+[2 of 3] Build tool - Maven/Gradle..etc
+ 
+> cd /appdata
+> wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+> tar -xvf apache-maven-3.9.6-bin.tar.gz
+ 
+> vi ~/.bashrc
+> export PATH=$PATH:"/appdata/apache-maven-3.9.6/bin"
+ 
+// confirm mvn is available
+> mvn --version 
+ 
+ 
+[3 of 3] IDE - VSCode
+ 
+> wget https://vscode.download.prss.microsoft.com/dbazure/download/stable/e170252f762678dec6ca2cc69aba1570769a5d39/code-stable-x64-1712770462.tar.gz
+> tar -xvf code-stable-x64-1712770462
+> ./VSCode-linux-x64/bin/code
+ 
+// Left Menu > Extensions > search 'java' 
+// install: 'Extension Packa for Java' and 'Maven for java'
+ 
+> CTRL+SHIFT+P        # or Help/Show All Commands
+> java: create java project 
+> Maven: create from archetype
+> maven-archetype-webapp
+> 1.4
+> com.example               # to unique-id your servlet packages in the world
+> demo                           # context/artifactId name ex.: demo.war
+ 
+// save project (ex.: /appdata/demo)
+ 
+// Package the *.war file with all dependencies
+> mvn clean package -f /appdata/demo             # outputs *.war file to: /appdata/demo/target/demo.war
+ 
+ 
+[BONUS] Run tomcat from Maven
+ 
+Edit 'pom.xml' of your project and add the plugin (among existing plugins):
+ 
+      <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+           <version>2.2</version>
+           <configuration>
+                <port>8089</port>
+           </configuration>
+      </plugin>
+ 
+ 
+View the app in a browser:  
+> http://<ip-address>:<port>/<artifactId>
+ 
