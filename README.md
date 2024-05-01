@@ -1,4 +1,6 @@
-DevOps - Session#1 - Git/GiLab
+DevOps
+
+	 Session#1 - Git/GiLab
 
 	 Session#2 - Create JSP Project
 
