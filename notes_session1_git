@@ -1,8 +1,8 @@
 Git/Github Notes | 2024-04-24 | push code to remote repository
 Create github account. Create a repository. Copy URL to clone it on your local computer.
 > cd Desktop
-> git clone git@github.com:astitou77/test.git
-> cd ~/Desktop/test
+> git clone git@github.com:astitou77/DevSecOps.git
+> cd ~/Desktop/DevSecOps
 // Link your local 'main' branch to the remote github 'origin/main' branch
 > git branch --set-upstream-to=origin/main main
 > git status    // shows no changes to commit/add yet
