@@ -1,0 +1,56 @@
+Containers: Docker/Podman | Session#3 | Notes 2024-05-07
+ 
+// Install Podman:  Podman Installation | Podman
+> sudo apt-get -y install podman                              // For Debian OS (ex.: uBuntu)
+ 
+// confirm install successful
+> podman --version
+ 
+// confirm podman service is Active
+> service podman status
+> service podman start          // if not Active, start service
+> service podman status
+ 
+// pull images (from the Docker/Podman hub repository by default)
+// Docker Hub Container Image Library | App Containerization
+> podman image ls --all
+> podman image pull hello-world:latest
+> podman image pull tomcat:latest
+> podman image pull python:latest
+> podman image ls --all           // see 3 images pulled from the repo
+> podman image rm <SHA>     // delete images by their SHA value (IMAGE ID)
+ 
+// Build a container step-by-step
+> podman container create hello-world
+> podman container start <SHA>      // to get the SHA value for the hello-world image: (podman image ls --all)
+> podman logs <SHA>                      // See the welcome message from Podman
+ 
+// Build same container in 1 step
+> podman run hello-world:latest
+ 
+// Build a Tomcat Container with our project's *.war file
+Option#1: (Build the *.war file from source code)
+> git clone git@github.com:astitou77/DevSecOps.git
+> open DevSecOps/demo in VScode, run Maven 'clean' and 'package', 
+> pick-up output in DevSecOps/demo/target/HelloWorld.war
+ 
+Option#2: Download HelloWorld.war file directly (Download icon)
+LastNameProject/HelloWorld.war at main · astitou77/LastNameProject (github.com)
+ 
+ 
+// Create the Dockerfile to customize the Tomcat container
+> vi Dockerfile
+>> # Use the latest tomcat image 
+>> FROM tomcat:latest
+>>
+>> # This assumes the *.war and this Dockerfile are in same directory
+>> COPY HelloWorld.war /usr/local/tomcat/webapps/
+ 
+ 
+// Build & Run the container
+podman build -t my-amazing-app .         // the dot '.' assumes the Dockerfile is in the current directory
+podman container list --all                          // see 'my-amazing-app' container was created, but not running
+podman run -d -p 8080:8080 my-amazing-app    // Run container 'my-amazing-app' on default port 8080, detached mode
+ 
+// Check the app is running from:
+http://<ip-address>:8080/demo
