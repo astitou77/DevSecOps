@@ -1,0 +1,40 @@
+MySQL | install, create database & user
+ 
+// Install MySQL Server  (on Debian OS ; ex.: uBuntu)
+sudo apt-get -y install mysql-server
+sudo cat /etc/mysql/debian.cnf                     // get username & password
+ 
+// Login to MySQL
+mysql -u <username> -p
+ 
+// MySQL commandline
+SHOW DATABASES;
+CREATE DATABASE helloDB;
+USE helloDB;
+ 
+SHOW TABLES;
+CREATE TABLE employees ( first_name VARCHAR(255), last_name VARCHAR(255) );
+SHOW COLUMNS FROM employees;
+ 
+SELECT * FROM employees;
+INSERT INTO employees (first_name, last_name) VALUES ('John', 'Doe'), ('Jane', 'Doe')
+SELECT * FROM employees;
+ 
+// Show all MySQL users
+SELECT user,host FROM mysql.user;
+ 
+// Create a DB username/password with access to only the 'helloDB' instance
+CREATE USER 'my_user'@'localhost' IDENTIFIED BY 'myPassword';
+GRANT ALL PRIVILEGES ON helloDB.* TO 'my_user'@'localhost';
+ 
+SHOW GRANTS FOR 'my_user'@'localhost';
+ 
+EXIT;
+ 
+Try to login with the 'my_user' and 'myPassword' credentials
+ 
+> mysql -u my_user -p    
+ 
+SHOW DATBASES;               // see 'helloDB'
+USE helloDB;
+SELECT * FROM employees;
