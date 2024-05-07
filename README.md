@@ -4,4 +4,7 @@ DevOps
 
 	 Session#2 - Create JSP Project
 
-	 Session#3 - Database
+	 Session#3 - Containers + Database
+
+	 Session#4 - Ansible
+  
