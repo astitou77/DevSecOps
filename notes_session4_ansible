@@ -1,0 +1,17 @@
+Notes
+
+[1] Install
+
+sudo apt install ansible
+
+pip3 list installed
+pip3 install ansible
+pip3 list installed
+
+
+[2] Run
+
+ansible-playbook -i my_inventory my_playbook.yml
+
+
+[3] RHEL Automation Platform
