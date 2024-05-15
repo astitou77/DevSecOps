@@ -61,7 +61,8 @@ Edit 'pom.xml' of your project and add the plugin (among existing plugins):
                 <port>8089</port>
            </configuration>
       </plugin>
- 
+
+> mvn clean package tomcat7:run -f /appdata/demo          # tomcat service starts locally in VSCode
  
 View the app in a browser:  
 > http://<ip-address>:<port>/<artifactId>
