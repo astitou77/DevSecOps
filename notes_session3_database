@@ -5,7 +5,7 @@ sudo apt-get -y install mysql-server
 sudo cat /etc/mysql/debian.cnf                     // get username & password
  
 // Login to MySQL
-mysql -u <username> -p
+sudo mysql -u <username> -p
  
 // MySQL commandline
 SHOW DATABASES;
