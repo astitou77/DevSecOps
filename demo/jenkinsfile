@@ -7,5 +7,30 @@ pipeline {
                 echo 'Hello World of Jenkins From github@github.com !!!!!'
             }
         }
+
+        stage('Build') {
+            steps {
+                echo 'Building the {demo} project app !'
+            }
+        }
+
+        stage('JUnit Tests') {
+            steps {
+                echo 'Testing the new build...'
+            }
+        }
+
+        stage('Install to Artifactory') {
+            steps {
+                echo 'Archiving Build to Artifactory...'
+            }
+        }
+
+        stage('Deploy to tomcat') {
+            steps {
+                echo 'Deploying to tomcat...'
+            }
+        }
+    
     }
 }
