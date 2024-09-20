@@ -1,32 +1,49 @@
 pipeline {
     agent any
 
+    environment {
+        ARTIFACTORY_URL = 'http://localhost:8082'
+        TOMCAT_URL = 'https://localhost:8089/demo'
+        GIT_REPO = 'git@github.com:astitou77/DevSecOps.git'
+        MAVEN_CLI_OPTS = '--batch-mode --errors'
+    }
+
     stages {
-        stage('Hello') {
+        stage('Checkout') {
             steps {
-                echo 'Hello World of Jenkins From github@github.com !!!!!'
+                echo 'Hello World of Jenkins From github@github.com !'
+                git 'git@github.com:astitou77/DevSecOps.git'
             }
         }
 
-        stage('Build') {
+        stage('2/5 Build') {
             steps {
                 echo 'Building the {demo} project app !'
             }
         }
 
-        stage('JUnit Tests') {
+        stage('3/5 JUnit Tests') {
             steps {
                 echo 'Testing the new build...'
             }
         }
 
-        stage('Install to Artifactory') {
+        stage('4/5 Upload to Artifactory') {
             steps {
                 echo 'Archiving Build to Artifactory...'
+                script {
+                    // Define WAR file path (adjust if necessary)
+                    def warFile = "target/*.war"
+                    
+                    // Upload WAR file to Artifactory
+                    sh """
+                    
+                    """
+                }
             }
         }
 
-        stage('Deploy to tomcat') {
+        stage('5/5 Deploy to tomcat') {
             steps {
                 echo 'Deploying to tomcat...'
             }
