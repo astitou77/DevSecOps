@@ -19,7 +19,7 @@ pipeline {
         stage('2/5 Build') {
             steps {
                 echo 'Building the {demo} project app !'
-                sh 'mvn clean package'
+                sh '/home/astitou/Desktop/apache-maven-3.9.9/bin/mvn clean package'
             }
         }
 
