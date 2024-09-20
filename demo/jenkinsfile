@@ -9,7 +9,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('1/5 Checkout') {
             steps {
                 echo 'Hello World of Jenkins From github@github.com !'
                 git 'https://github.com/astitou77/DevSecOps.git'
@@ -19,6 +19,7 @@ pipeline {
         stage('2/5 Build') {
             steps {
                 echo 'Building the {demo} project app !'
+                sh 'mvn clean package'
             }
         }
 
