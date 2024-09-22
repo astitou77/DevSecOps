@@ -19,7 +19,7 @@ pipeline {
         stage('2/5 Build') {
             steps {
                 echo 'Building the {demo} project app ! 222222'
-                sh 'mvn clean package'
+                sh 'mvn clean package -f "./demo/pom.xml"'
             }
         }
 
