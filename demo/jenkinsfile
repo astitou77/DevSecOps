@@ -32,11 +32,7 @@ pipeline {
         stage('4/5 Upload to Artifactory') {
             steps {
                 echo 'Archiving Build to Artifactory...'
-                script {
-                    sh """
-                      mvn deploy -f "./demo/pom.xml"
-                    """
-                }
+                sh 'mvn deploy -f "./demo/pom.xml"'
             }
         }
 
