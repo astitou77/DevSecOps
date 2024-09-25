@@ -8,6 +8,10 @@ pipeline {
         MAVEN_CLI_OPTS = '--batch-mode --errors'
     }
 
+    tools {
+      jfrog 'jfrog-cli-latest'
+    }
+
     stages {
         stage('1/5 Checkout') {
             steps {
@@ -32,6 +36,10 @@ pipeline {
         stage('4/5 Upload to Artifactory') {
             steps {
                 echo 'Archiving Build to Artifactory...'
+                jf '-v'
+                jf 'c show'
+                jf 'rt ping'
+                echo 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.....'
                 sh 'mvn deploy -f "./demo/pom.xml"'
             }
         }
