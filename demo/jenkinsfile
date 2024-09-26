@@ -32,9 +32,9 @@ pipeline {
         stage('4/5 Upload to Artifactory') {
             steps {
                 echo 'Archiving Build to Artifactory...'
-                jf '-v'
-                jf 'c show'
-                jf 'rt ping'
+                /usr/local/bin/jfrog '-v'
+                /usr/local/bin/jfrog 'c show'
+                /usr/local/bin/jfrog 'rt ping'
                 echo 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.....'
                 sh 'mvn deploy -f "./demo/pom.xml"'
             }
