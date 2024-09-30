@@ -6,8 +6,8 @@ pipeline {
         TOMCAT_URL = 'https://localhost:8089/demo'
         GIT_REPO = 'git@github.com:astitou77/DevSecOps.git'
         MAVEN_CLI_OPTS = '--batch-mode --errors'
-        ARTIFACTORY_USERNAME = credentials('artifactory-creds')
-        ARTIFACTORY_PASSWORD = credentials('artifactory-creds')
+        // ARTIFACTORY_USERNAME = credentials('artifactory-creds')
+        // ARTIFACTORY_PASSWORD = credentials('artifactory-creds')
     }
 
     stages {
@@ -37,10 +37,7 @@ pipeline {
                                                   usernameVariable: 'ARTIFACTORY_USERNAME', 
                                                   passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
                   echo 'Archiving Build to Artifactory...'
-                  echo $ARTIFACTORY_USERNAME
-                  echo $ARTIFACTORY_PASSWORD
-                  // jfrog -v
-                  sh 'mvn deploy -Dartifactory.username=$ARTIFACTORY_USERNAME -Dartifactory.password=$ARTIFACTORY_PASSWORD -f "./demo/pom.xml"'
+                  sh 'mvn deploy'
                 }
             }
         }
