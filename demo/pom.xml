@@ -25,7 +25,7 @@
     <repository>
         <id>central</id>
         <name>maven-local-repoz</name>
-        <url>http://192.168.8.166:8082/artifactory/maven-local-repoz</url>
+        <url>http://192.168.8.166:8081/artifactory/maven-local-repoz</url>
     </repository>
     <!--snapshotRepository>
         <id>snapshots</id>
@@ -102,7 +102,7 @@
             <configuration>
                 <!--altDeploymentRepository>central::default::http://192.168.8.166:8082/artifactory/maven-local-repoz</altDeploymentRepository-->
                 <!--ADNANE ADDED-->
-                <url>https://192.168.8.166:8082/artifactory/maven-local-repoz</url>
+                <url>https://192.168.8.166:8081/artifactory/maven-local-repoz</url>
                 <repositoryId>central</repositoryId>
                 <username>${env.ARTIFACTORY_USERNAME}</username>
                 <password>${env.ARTIFACTORY_PASSWORD}</password>
