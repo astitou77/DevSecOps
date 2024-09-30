@@ -38,6 +38,8 @@ pipeline {
                                                     usernameVariable: 'ARTIFACTORY_USERNAME', 
                                                     passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
                     echo 'Archiving Build to Artifactory...'
+                    echo "Using Artifactory username: ${ARTIFACTORY_USERNAME}"
+                    echo "Using Artifactory password: ${ARTIFACTORY_PASSWORD}"
                     sh 'mvn deploy -s ./demo/settings.xml -f ./demo/pom.xml'
                     }
                 }
@@ -47,6 +49,8 @@ pipeline {
         stage('5/5 Deploy to tomcat') {
             steps {
                 echo 'Deploying to tomcat...'
+                podman cp ./demo/target/demo.war sad_shannon:/usr/local/tomcat/webapps
+                podman restart sad_shannon
             }
         }
     
