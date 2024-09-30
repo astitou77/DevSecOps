@@ -7,7 +7,7 @@ pipeline {
         GIT_REPO = 'git@github.com:astitou77/DevSecOps.git'
         MAVEN_CLI_OPTS = '--batch-mode --errors'
         ARTIFACTORY_USERNAME = 'astitou'
-        ARTIFACTORY_PASSWORD = 'Ibn$ina1'
+        ARTIFACTORY_PASSWORD = 'cmVmdGtuOjAxOjE3NTgzNzAyODQ6cW5qNjVyazB5MDBHQUFCdldhRUlHb3pOYWNH'
     }
 
     stages {
