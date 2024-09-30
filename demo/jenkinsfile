@@ -53,7 +53,7 @@ pipeline {
                                                     usernameVariable: 'TOMCAT_USERNAME', 
                                                     passwordVariable: 'TOMCAT_PASSWORD')]) {
                     echo 'Deploying to tomcat...'
-                    sh 'mvn install -s ./demo/settings.xml -f ./demo/pom.xml'
+                    sh 'mvn install tomcat7:deploy -s ./demo/settings.xml -f ./demo/pom.xml'
                     // podman cp ./demo/target/demo.war sad_shannon:/usr/local/tomcat/webapps
                     // podman restart sad_shannon
                     }
