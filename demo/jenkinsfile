@@ -48,11 +48,19 @@ pipeline {
 
         stage('5/5 Deploy to tomcat') {
             steps {
-                echo 'Deploying to tomcat...'
-                podman cp ./demo/target/demo.war sad_shannon:/usr/local/tomcat/webapps
-                podman restart sad_shannon
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'tomcat-creds', 
+                                                    usernameVariable: 'TOMCAT_USERNAME', 
+                                                    passwordVariable: 'TOMCAT_PASSWORD')]) {
+                    echo 'Deploying to tomcat...'
+                    sh 'mvn install -s ./demo/settings.xml -f ./demo/pom.xml'
+                    // podman cp ./demo/target/demo.war sad_shannon:/usr/local/tomcat/webapps
+                    // podman restart sad_shannon
+                    }
+                }
             }
         }
+
     
     }
 }

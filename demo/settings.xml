@@ -130,6 +130,17 @@ under the License.
         <username>${env.ARTIFACTORY_USERNAME}</username>
         <password>${env.ARTIFACTORY_PASSWORD}</password>
     </server>
+    
+    <!--role rolename="manager-gui"/>
+    <user username="tomcat" password="s3cret" roles="manager-gui"/-->
+    <server>
+        <id>TomcatServer</id>
+        <username>${env.TOMCAT_USERNAME}</username>
+        <password>${env.TOMCAT_PASSWORD}</password>
+    </server>
+
+
+
 
     <!--server>
         <id>snapshots</id>
