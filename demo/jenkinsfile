@@ -6,8 +6,8 @@ pipeline {
         TOMCAT_URL = 'https://localhost:8089/demo'
         GIT_REPO = 'git@github.com:astitou77/DevSecOps.git'
         MAVEN_CLI_OPTS = '--batch-mode --errors'
-        ARTIFACTORY_USERNAME = astitou
-        ARTIFACTORY_PASSWORD = Ibn$ina1
+        ARTIFACTORY_USERNAME = 'astitou'
+        ARTIFACTORY_PASSWORD = 'Ibn$ina1'
     }
 
     stages {
