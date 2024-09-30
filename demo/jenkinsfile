@@ -33,11 +33,13 @@ pipeline {
 
         stage('4/5 Upload to Artifactory') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'artifactory-creds', 
-                                                  usernameVariable: 'ARTIFACTORY_USERNAME', 
-                                                  passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
-                  echo 'Archiving Build to Artifactory...'
-                  sh 'mvn deploy'
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'artifactory-creds', 
+                                                    usernameVariable: 'ARTIFACTORY_USERNAME', 
+                                                    passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
+                    echo 'Archiving Build to Artifactory...'
+                    sh 'mvn deploy -s ./demo/settings.xml -f ./demo/pom.xml'
+                    }
                 }
             }
         }

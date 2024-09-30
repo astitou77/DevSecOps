@@ -105,6 +105,8 @@
                 <url>http://192.168.8.166:8081/artifactory/maven-local-repoz</url>
                 <repositoryId>central</repositoryId>
                 <username>${env.ARTIFACTORY_USERNAME}</username>
+                <privateKey>${env.HOME}/.ssh/id_rsa</privateKey>
+                <!--passphrase>your_passphrase</passphrase-->
                 <password>${env.ARTIFACTORY_PASSWORD}</password>
             </configuration>
         </plugin>
