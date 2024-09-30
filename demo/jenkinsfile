@@ -38,7 +38,7 @@ pipeline {
                                                   passwordVariable: 'ARTIFACTORY_PASSWORD')]) {
                   echo 'Archiving Build to Artifactory...'
                   // jfrog -v
-                  sh 'mvn deploy -f "./demo/pom.xml"'
+                  sh 'mvn deploy -Dartifactory.username=$ARTIFACTORY_USERNAME -Dartifactory.password=$ARTIFACTORY_PASSWORD -f "./demo/pom.xml"'
                 }
             }
         }
