@@ -6,6 +6,8 @@ pipeline {
         TOMCAT_URL = 'https://localhost:8089/demo'
         GIT_REPO = 'git@github.com:astitou77/DevSecOps.git'
         MAVEN_CLI_OPTS = '--batch-mode --errors'
+        ARTIFACTORY_USERNAME = astitou
+        ARTIFACTORY_PASSWORD = Ibn$ina1
     }
 
     stages {
@@ -33,8 +35,7 @@ pipeline {
             steps {
                 echo 'Archiving Build to Artifactory...'
                 // jfrog -v
-                echo 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.....'
-                //sh 'mvn deploy -f "./demo/pom.xml"'
+                sh 'mvn deploy -f "./demo/pom.xml"'
             }
         }
 
