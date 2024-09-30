@@ -22,7 +22,7 @@
     <repository>
         <id>central</id>
         <name>maven-local-repoz</name>
-        <url>http://localhost:8081/artifactory/maven-local-repoz</url>
+        <url>http://192.168.8.166:8081/artifactory/maven-local-repoz</url>
     </repository>
     <!--snapshotRepository>
         <id>snapshots</id>
@@ -97,7 +97,7 @@
             <artifactId>maven-deploy-plugin</artifactId>
             <version>2.8.2</version>
             <configuration>
-                <altDeploymentRepository>central::default::http://127.0.0.1:8082/artifactory/maven-local-repoz</altDeploymentRepository>
+                <altDeploymentRepository>central::default::http://192.168.8.166:8082/artifactory/maven-local-repoz</altDeploymentRepository>
             </configuration>
         </plugin>
 
