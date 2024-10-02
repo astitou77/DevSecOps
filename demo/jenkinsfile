@@ -48,6 +48,10 @@ pipeline {
 
         stage('5/5 Deploy to tomcat') {
             steps {
+
+
+              curl --upload-file target/demo.war --user tomcat:l84w0rk "http://localhost:8088/manager/text/deploy?path=/demo&update=true"
+/*
                 script{
                     withCredentials([usernamePassword(credentialsId: 'tomcat-creds', 
                                                     usernameVariable: 'TOMCAT_USERNAME', 
@@ -58,6 +62,9 @@ pipeline {
                     // podman restart sad_shannon
                     }
                 }
+*/
+
+
             }
         }
 
