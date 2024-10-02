@@ -50,8 +50,7 @@ pipeline {
             steps {
 
 
-          curl --upload-file target/demo.war --user tomcat:l84w0rk "http://localhost:8088/manager/text/deploy?path=/demo&update=true"
-
+          sh 'curl --upload-file target/demo.war --user tomcat:l84w0rk "http://localhost:8088/manager/text/deploy?path=/demo&update=true"'
 
             }
         }
