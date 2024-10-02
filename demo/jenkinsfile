@@ -50,19 +50,7 @@ pipeline {
             steps {
 
 
-              curl --upload-file target/demo.war --user tomcat:l84w0rk "http://localhost:8088/manager/text/deploy?path=/demo&update=true"
-/*
-                script{
-                    withCredentials([usernamePassword(credentialsId: 'tomcat-creds', 
-                                                    usernameVariable: 'TOMCAT_USERNAME', 
-                                                    passwordVariable: 'TOMCAT_PASSWORD')]) {
-                    echo 'Deploying to tomcat...'
-                    sh 'mvn install tomcat7:deploy -s ./demo/settings.xml -f ./demo/pom.xml'
-                    // podman cp ./demo/target/demo.war sad_shannon:/usr/local/tomcat/webapps
-                    // podman restart sad_shannon
-                    }
-                }
-*/
+          curl --upload-file target/demo.war --user tomcat:l84w0rk "http://localhost:8088/manager/text/deploy?path=/demo&update=true"
 
 
             }
